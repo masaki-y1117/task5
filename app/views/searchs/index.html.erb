@@ -1,24 +1,26 @@
 <% if @range == "1" %>
-<table class="table table-hover table-inverse">
+<h1>Users search for "<%= @word %>"</h1>
+<table class="table table-hover">
   <thead>
-     <tr>
+    <tr>
       <th>image</th>
       <th>name</th>
       <th colspan="3"></th>
-     </tr>
-   </thead>
-
-   <tbody>
-    <% @user.each do |user| %>
-     <tr>
+    </tr>
+  </thead>
+  <tbody>
+  <% @user.each do |user| %>
+    <tr>
       <td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %></td>
       <td><%= user.name%></td>
       <td><%= link_to "Show", user, class: "user_#{user.id}" %></td>
-     </tr>
-    <% end %>
-   </tbody>
-  
-  <% else %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<% else %>
+<h1>Books search for "<%= @word %>"</h1>
+<table class= "table table-hover">
   <thead>
     <tr>
      <th></th>
@@ -28,19 +30,20 @@
     </tr>
   </thead>
   <tbody>
-     <% @book.each do |book| %>
-     <tr>
-      <td>
-       <%= link_to(book.user) do %>
-       <%= attachment_image_tag(book.user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %>
-       <% end %>
-      </td>
-      <td>
-       <%= link_to book.title, book, class: "book_#{book.id}" %> 
-      </td>
-      <td><%= book.body %></td>
-     </tr>
-     <% end %>
+    <% @book.each do |book| %>
+    <tr>
+    <td>
+      <%= link_to(book.user) do %>
+      <%= attachment_image_tag(book.user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %>
+      <% end %>
+    </td>
+    <td>
+      <%= link_to book.title, book, class: "book_#{book.id}" %> 
+    </td>
+    <td><%= book.body %></td>
+    </tr>
+    <% end %>
   </tbody>
- </table>
+</table>
 <% end %>
+
