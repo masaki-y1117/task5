@@ -13,10 +13,7 @@ class UsersController < ApplicationController
     @user = current_user
   end
   
-  def search
-    @user = User.seach(params[:search])
-  end
-  
+
   def create
     @books = Book.all
     @book = Book.new(book_params)
